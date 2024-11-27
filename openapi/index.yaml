@@ -23,24 +23,6 @@ schemes:
 security:
   - SubscriptionKey: []
 paths:
-  /services:
-    get:
-      operationId: getVisibleServices
-      summary: GetVisibleServices.
-      description: >-
-        Returns all the services that have the 'is_visibile' field value set to
-        true.
-      tags:
-        - restricted
-      responses:
-        '200':
-          description: Found.
-          schema:
-            $ref: '#/definitions/PaginatedServiceTupleCollection'
-        '401':
-          description: Unauthorized
-        '429':
-          description: Too many requests
   /services/{service_id}:
     get:
       operationId: getService
@@ -670,11 +652,6 @@ definitions:
         $ref: '#/definitions/IsTestProfile'
     required:
       - is_email_validated
-  PaginatedServiceTupleCollection:
-    description: A paginated collection of services tuples
-    allOf:
-      - $ref: '#/definitions/ServiceTupleCollection'
-      - $ref: '#/definitions/PaginationResponse'
   ProblemJson:
     type: object
     properties:
@@ -908,39 +885,6 @@ definitions:
     format: OrganizationFiscalCode
     x-import: '@pagopa/ts-commons/lib/strings'
     example: '12345678901'
-  ServiceTupleCollection:
-    description: A collection of services tuples (service and version)
-    type: object
-    properties:
-      items:
-        type: array
-        items:
-          description: Service identifier and version used to return list of services.
-          type: object
-          properties:
-            service_id:
-              $ref: '#/definitions/ServiceId'
-            scope:
-              $ref: '#/definitions/ServiceScope'
-            version:
-              type: integer
-          required:
-            - service_id
-            - version
-    required:
-      - items
-  PaginationResponse:
-    type: object
-    description: Pagination response parameters.
-    properties:
-      prev:
-        type: string
-        description: Contains a value useful to get the previous page
-        example: first_id_of_the_page
-      next:
-        type: string
-        description: Contains a value useful to get the next page
-        example: last_id_of_the_page
   NotificationChannel:
     type: string
     description: All notification channels.

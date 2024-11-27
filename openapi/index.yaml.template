@@ -23,23 +23,6 @@ schemes:
 security:
   - SubscriptionKey: []
 paths:
-  "/services":
-    get:
-      operationId: getVisibleServices
-      summary: GetVisibleServices.
-      description: |-
-        Returns all the services that have the 'is_visibile' field value set to true.
-      tags:
-        - restricted
-      responses:
-        "200":
-          description: Found.
-          schema:
-            $ref: "#/definitions/PaginatedServiceTupleCollection"
-        "401":
-          description: Unauthorized
-        "429":
-          description: Too many requests
   "/services/{service_id}":
     get:
       operationId: getService
@@ -508,8 +491,6 @@ definitions:
     $ref: "../node_modules/@pagopa/io-functions-commons/openapi/definitions.yaml#/ExtendedProfile"
   NewProfile:
     $ref: "../node_modules/@pagopa/io-functions-commons/openapi/definitions.yaml#/NewProfile"
-  PaginatedServiceTupleCollection:
-    $ref: "../node_modules/@pagopa/io-functions-commons/openapi/definitions.yaml#/PaginatedServiceTupleCollection"
   ProblemJson:
     $ref: "../node_modules/@pagopa/io-functions-commons/openapi/definitions.yaml#/ProblemJson"
   Profile:
@@ -554,10 +535,6 @@ definitions:
     $ref: "../node_modules/@pagopa/io-functions-commons/openapi/definitions.yaml#/Timestamp"
   OrganizationFiscalCode:
     $ref: "../node_modules/@pagopa/io-functions-commons/openapi/definitions.yaml#/OrganizationFiscalCode"
-  ServiceTupleCollection:
-    $ref: "../node_modules/@pagopa/io-functions-commons/openapi/definitions.yaml#/ServiceTupleCollection"
-  PaginationResponse:
-    $ref: "../node_modules/@pagopa/io-functions-commons/openapi/definitions.yaml#/PaginationResponse"
   NotificationChannel:
     $ref: "../node_modules/@pagopa/io-functions-commons/openapi/definitions.yaml#/NotificationChannel"
   NotificationChannelStatusValue:

@@ -9,8 +9,7 @@
       "Function.GetMessages": "Warning",
       "Function.GetProfile": "Warning",
       "Function.GetService": "Warning",
-      "Function.GetUserDataProcessing": "Warning",
-      "Function.GetVisibleServices": "Warning"
+      "Function.GetUserDataProcessing": "Warning"
     },
     "applicationInsights": {
       "samplingSettings": {
