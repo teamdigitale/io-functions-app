@@ -45,7 +45,7 @@ services:
       - functions-node-18
 
   testagent:
-    image: node:16-alpine
+    image: node:16-alpine@sha256:a1f9d027912b58a7c75be7716c97cfbc6d3099f3a97ed84aa490be9dee20e787
     working_dir: /usr/src/app
     command: tail -f /dev/null # to keep it   up&running
     env_file:
